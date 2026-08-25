@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HourSet — a shared session</title>
+<meta name="description" content="Someone shared a HourSet gym session with
+ you. Open it in the app, or find out what HourSet is.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:0 20px 96px;background:#FFFFFF;color:#1A1A1A;
+  font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  -webkit-text-size-adjust:100%}
+.wrap{max-width:660px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;padding:44px 0 8px;
+  border-bottom:1px solid #E4E4E4;margin-bottom:34px}
+header b{font-size:21px;font-weight:700;letter-spacing:-.01em}
+h1{font-size:30px;line-height:1.25;font-weight:700;margin:0 0 6px;
+  letter-spacing:-.015em}
+h2{font-size:20px;font-weight:700;margin:38px 0 10px;letter-spacing:-.01em}
+p{margin:0 0 16px}
+ul{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:8px}
+.updated{color:#5A5A5A;font-size:15px;margin:0 0 30px}
+strong{font-weight:650}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid #E4E4E4;
+  color:#5A5A5A;font-size:15px}
+a{color:#A35A14;text-decoration:underline}
+@media (prefers-color-scheme:dark){
+  body{background:#000000;color:#F2F2F2}
+  header,footer{border-color:#2B2B2B}
+  .updated,footer{color:#8F8F8F}
+  a{color:#E8862B}
+}
+
+.cta{display:block;margin:28px 0 8px;padding:16px 20px;border-radius:12px;
+background:#E8862B;color:#000;font-weight:700;font-size:17px;
+text-align:center;text-decoration:none;min-height:48px}
+.cta:hover{text-decoration:none}
+.none{display:none}
+.note{font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><svg viewBox="0 0 64 64" width="44" height="44" fill="none" aria-hidden="true"><rect width="64" height="64" rx="14.08" fill="#000000"/><circle cx="32" cy="32" r="17.01" stroke="#F2F2F2" stroke-opacity="0.24" stroke-width="5.67"/><path d="M32 14.99 A17.01 17.01 0 1 1 23.50 46.73" stroke="#E8862B" stroke-width="5.67" stroke-linecap="round"/></svg><b>HourSet</b></header>
+
+<div id="has-session" class="none">
+<h1>Someone sent you a session</h1>
+<p>Open it in HourSet and today becomes their workout. Your history is not
+touched, and this is today only.</p>
+<a id="open" class="cta" href="#">Open in HourSet</a>
+<p class="note">Nothing on this page has been uploaded. The session travels in
+the part of the link after the <code>#</code>, which your browser never sends
+to a server.</p>
+</div>
+
+<div id="no-session" class="none">
+<h1>Nothing to open</h1>
+<p>This page opens a session someone shared with you, and this link does not
+have one in it. Ask them to send it again — the whole link matters, including
+everything after the <code>#</code>.</p>
+</div>
+
+<h2>What is HourSet?</h2>
+<p>HourSet builds a one-hour full-body gym session from what you have actually trained, and gets out of the way while you train it. No account, no sign-in, and nothing about your training leaves your phone.</p>
+
+<footer>HourSet is a gym planner that works entirely offline.
+<a href="../">Privacy policy</a> · <a href="../support/">Support</a></footer>
+</div>
+
+<script>
+// The code is validated before it is used, not after. Anything can be put in
+// a fragment by anyone, and this is the only place on the page where outside
+// text reaches an attribute - so it either matches the shape the app writes,
+// exactly, or the page says there is nothing here.
+(function () {
+  var raw = (location.hash || '').replace(/^#/, '');
+  var ok = /^HS1\.[A-Za-z0-9_=-]+$/.test(raw);
+  document.getElementById(ok ? 'has-session' : 'no-session').className = '';
+  if (ok) {
+    document.getElementById('open').setAttribute('href', 'hourset://plan#' + raw);
+  }
+})();
+</script>
+</body>
+</html>
