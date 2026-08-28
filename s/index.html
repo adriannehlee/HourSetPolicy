@@ -78,9 +78,31 @@ everything after the <code>#</code>.</p>
   var raw = (location.hash || '').replace(/^#/, '');
   var ok = /^HS1\.[A-Za-z0-9_=-]+$/.test(raw);
   document.getElementById(ok ? 'has-session' : 'no-session').className = '';
-  if (ok) {
-    document.getElementById('open').setAttribute('href', 'hourset://plan#' + raw);
-  }
+  if (!ok) { return; }
+
+  // Android gets an intent:// URL, not the custom scheme.
+  //
+  // Chrome will not follow a bare hourset:// from a link - the tap does
+  // nothing at all, with no error anywhere, which is exactly how this was
+  // reported on 27 Aug 2026. The app itself was never the problem: firing
+  // the same URL with `adb am start` opened it and adopted the session.
+  //
+  // The payload moves into the PATH because intent:// spends the fragment on
+  // its own parameters. The app finds it either way - PlanShare.codeIn
+  // matches the code anywhere in the string - and this was checked on the
+  // phone before it was written here.
+  //
+  // No browser_fallback_url on purpose: with `package=` and no fallback,
+  // Chrome sends someone without the app to its Play listing, which is the
+  // right destination. A fallback pointing back at this page would loop.
+  //
+  // Nothing about privacy changes. An intent:// URL never reaches a server,
+  // and THIS page's address still carries the session after the #.
+  var deep = /Android/i.test(navigator.userAgent)
+    ? 'intent://plan/' + raw
+      + '#Intent;scheme=hourset;package=com.hourset.app;end'
+    : 'hourset://plan#' + raw;
+  document.getElementById('open').setAttribute('href', deep);
 })();
 </script>
 </body>
