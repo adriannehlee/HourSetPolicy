@@ -37,11 +37,12 @@ a{color:#A35A14;text-decoration:underline}
 <div class="wrap">
 <header><svg viewBox="0 0 64 64" width="44" height="44" fill="none" aria-hidden="true"><rect width="64" height="64" rx="14.08" fill="#000000"/><circle cx="32" cy="32" r="17.01" stroke="#F2F2F2" stroke-opacity="0.24" stroke-width="5.67"/><path d="M32 14.99 A17.01 17.01 0 1 1 23.50 46.73" stroke="#E8862B" stroke-width="5.67" stroke-linecap="round"/></svg><b>HourSet</b></header>
 <h1>HourSet — Privacy Policy</h1>
-<p class="updated"><strong>Last updated: 23 August 2026</strong></p>
-<p>HourSet has no account and no sign-in. It collects nothing about you. Your training stays on your own device.</p>
-<p>There are two exceptions. Both are worth stating at the top rather than burying.</p>
+<p class="updated"><strong>Last updated: 23 September 2026</strong></p>
+<p>HourSet has no account and no sign-in. It collects nothing that identifies you. Your training stays on your own device.</p>
+<p>There are three exceptions. All are worth stating at the top rather than burying.</p>
 <p><strong>The subscription screen talks to a payment service.</strong> It fetches prices, and checks whether you have already paid. If you never open that screen, the app never contacts anybody about money. What it sends is set out under &quot;Purchases&quot;.</p>
 <p><strong>If the app hits an error, it sends the error.</strong> Not what you were doing, and not what you lifted. It sends the fault itself, where in the code it happened, and the phone model and operating system version. No identifier goes with it. Two reports from the same phone cannot be recognised as coming from the same phone. This is set out under &quot;Crash diagnostics&quot;.</p>
+<p><strong>Once a day, the app sends anonymous usage counts.</strong> Counts such as &quot;a workout was finished&quot; or &quot;an exercise was swapped for another&quot;. No identifier, nothing about your body, never your weights or reps. You can switch it off in Settings. This is set out under &quot;Anonymous usage counts&quot;.</p>
 <p>One other thing can leave your device. If you switch spoken cues on, the cue goes to your phone&#x27;s own text-to-speech engine. That is described further down.</p>
 <h2>What the app stores</h2>
 <p>Everything HourSet knows about you is written to your own device and stays there:</p>
@@ -53,7 +54,7 @@ a{color:#A35A14;text-decoration:underline}
 <p>This is held in the app&#x27;s private storage. No copy is sent anywhere. Uninstall the app and all of it is deleted with it.</p>
 <p><strong>None of this is ever transmitted, including when you buy a subscription.</strong> Your training history is not part of a purchase. It is never sent with one.</p>
 <h2>Purchases</h2>
-<p>HourSet is free for 7 days. After that it needs a subscription or a one-time purchase. Payment is handled by Apple or Google. HourSet never sees your card, your billing address or your store account.</p>
+<p>Browsing HourSet is free: today&#x27;s plan, the exercise previews and your progress. Starting a workout needs a subscription or a one-time purchase. Payment is handled by Apple or Google. HourSet never sees your card, your billing address or your store account.</p>
 <p>To know whether you have paid, the app uses <strong>RevenueCat</strong>, a subscription service operated by RevenueCat, Inc. in the United States. When it runs, it sends:</p>
 <ul>
 <li>a random identifier RevenueCat generates for this installation. Not your name, email, or any account of yours, and not linked to anything else</li>
@@ -62,10 +63,11 @@ a{color:#A35A14;text-decoration:underline}
 </ul>
 <p><strong>When it runs is deliberately limited.</strong> The app does not start RevenueCat when it launches. It contacts the service in two situations:</p>
 <ul>
-<li><strong>When the subscription screen is shown.</strong> During your free week that only happens if you tap the countdown or open it from Settings. Once the free week has ended, that screen is the app, so it happens every time you open it.</li>
+<li><strong>When the subscription screen is shown.</strong> Before you subscribe, that happens when you press Start on a workout, or open the plans from Settings. Browsing the app - the plan, the exercise previews, your progress - shows no subscription screen and makes no such request.</li>
 <li><strong>When a subscription you already have is within 2 days of renewing</strong>, to check it is still valid. This is the only thing that happens without you opening a screen. It never applies to anyone who has not subscribed.</li>
 </ul>
-<p>Two consequences worth stating plainly. <strong>If you never open the subscription screen, HourSet makes no network requests at all.</strong> That is the whole of it, not a qualified version. And the one-time lifetime purchase cannot lapse, so it is never re-checked.</p>
+<p>One more question leaves your phone, and it goes to the store you installed from. <strong>Once a day, when you open the app, HourSet asks Google Play whether a newer version exists.</strong> The question is answered by the Play services already on your phone - the same ones that installed the app and could update it silently on their own - and it carries nothing about you or your training. Nothing downloads unless you tap the update.</p>
+<p>Two consequences worth stating plainly. <strong>If you never open the subscription screen, the only network requests HourSet makes are that once-a-day version check to Google Play and, unless you switch them off, the once-a-day usage counts described below.</strong> And the one-time lifetime purchase cannot lapse, so it is never re-checked.</p>
 <p>RevenueCat&#x27;s own privacy policy is at https://www.revenuecat.com/privacy/.</p>
 <h2>Crash diagnostics</h2>
 <p>When something in the app goes wrong, a report is sent to Sentry (https://sentry.io), a diagnostics service. It contains the error, the line of code it came from, and the device model and OS version. That is the whole of it.</p>
@@ -80,14 +82,36 @@ a{color:#A35A14;text-decoration:underline}
 </ul>
 <p>An error inside the app does not register as a crash with Apple or Google. Without these reports, a fault could only be reported as &quot;it broke&quot;. A bug nobody can locate is a bug that stays.</p>
 <p>Sentry&#x27;s privacy policy is at https://sentry.io/privacy/.</p>
+<h2>Anonymous usage counts</h2>
+<p>From version 1.0.1, HourSet counts a few things about how the app is used, so it can be improved without asking anyone to sign up. The counts are added up on your phone and sent at most once a day.</p>
+<p><strong>What is counted:</strong></p>
+<ul>
+<li><strong>Changes to the plan:</strong> which exercise was swapped out and which replaced it, and which exercises were marked as not for you.</li>
+<li><strong>Workouts:</strong> that one was started, finished or left early. For one left early: which part it was in (warm-up, main work or cool-down), roughly how far through, and roughly how long it had run compared with the time planned. Both are in quarters, such as &quot;under half&quot;, never exact.</li>
+<li><strong>Setting up the app:</strong> which of the three setup steps were reached, and whether setup was completed.</li>
+<li><strong>The subscription screen:</strong> that it was shown, which option was tapped, whether a purchase went through, was cancelled or failed, and that the screen was closed. Not the price, not the receipt, nothing about your store account.</li>
+<li><strong>How the app is set up:</strong> session length, days per week, units, sets per exercise, and which equipment is switched off. These go once per sending day. Injuries you have entered are never sent.</li>
+<li><strong>Which parts of the app have been opened</strong>, once each, ever: progress, adjusting a workout, settings, sharing a workout, opening a shared workout.</li>
+</ul>
+<p><strong>What is never sent:</strong></p>
+<ul>
+<li><strong>No identifier of any kind.</strong> No account, device id, advertising id or installation id. Every phone&#x27;s counts are added to everyone else&#x27;s. Nobody can tell which counts came from which phone, or that two days of counts came from the same one.</li>
+<li><strong>No weights, reps, times or notes.</strong> What you lift stays on your phone.</li>
+<li><strong>No timestamps.</strong> The server records only the date a batch arrived.</li>
+<li><strong>No IP address stored.</strong> The server does not read or keep it, and its request logging is switched off.</li>
+<li><strong>No free text.</strong> The app can only send items from a fixed list, as short codes. Anything else is refused on the phone and again on the server.</li>
+</ul>
+<p><strong>Where it goes.</strong> To HourSet&#x27;s own small server, which runs on Cloudflare Workers (Cloudflare, Inc., United States). It keeps nothing but the daily totals. Nobody else receives the counts.</p>
+<p><strong>Switching it off.</strong> Settings → Privacy → &quot;Share anonymous usage counts&quot;. Switching it off also deletes any counts on your phone that had not been sent yet. Counts already sent cannot be deleted on request, because nothing in them says which were yours.</p>
+<p>Cloudflare&#x27;s privacy policy is at https://www.cloudflare.com/privacypolicy/.</p>
 <h2>What the app does not do</h2>
 <ul>
-<li>No analytics, telemetry or usage tracking. The crash reports above are faults, and are sent only when one happens</li>
+<li>No tracking. The usage counts above carry no identifier, are not linked to you, and can be switched off. The crash reports are sent only when a fault happens</li>
 <li>No advertising, and no advertising identifiers</li>
 <li>No accounts, sign-in or email collection</li>
 <li>No location, contacts, photos, camera or microphone access</li>
 <li>No profiling, and no selling or sharing of anything with anybody</li>
-<li>No third-party SDK that collects data, other than RevenueCat and Sentry as described above. One answers &quot;has this person paid&quot;. The other answers &quot;what went wrong&quot;</li>
+<li>No third-party SDK that collects data, other than RevenueCat and Sentry as described above. One answers &quot;has this person paid&quot;. The other answers &quot;what went wrong&quot;. The usage counts go to HourSet&#x27;s own server, not to an analytics company</li>
 </ul>
 <h2>Permissions</h2>
 <p>HourSet requests one permission: <strong>notifications</strong>. It is used only to show your rest timer on the lock screen while a workout runs. You do not have to keep the app open. It is optional. Decline it and the app works normally, with the timer on screen.</p>
@@ -99,7 +123,7 @@ a{color:#A35A14;text-decoration:underline}
 <p>The identifier RevenueCat holds is random. It is not tied to your name or email. That means we cannot look you up from your own details. To have the record for your installation deleted, email the address below. Send it from the account you bought with, and we will pass the request on. Deleting it does not cancel or refund a subscription. That is done in the App Store or Google Play.</p>
 <p>Your training data needs no request. It is on your phone. Uninstalling deletes it.</p>
 <h2>Children</h2>
-<p>HourSet is a general-purpose fitness app. It is not directed at children under 13. It collects nothing that identifies anyone, of any age. It collects nothing at all about anyone who does not open the subscription screen or hit an error.</p>
+<p>HourSet is a general-purpose fitness app. It is not directed at children under 13. It collects nothing that identifies anyone, of any age. Apart from the anonymous usage counts, which can be switched off, it collects nothing at all about anyone who does not open the subscription screen or hit an error.</p>
 <h2>Changes</h2>
 <p>If this policy changes, the new version is posted at this address. It carries a new date at the top.</p>
 <h2>Contact</h2>
