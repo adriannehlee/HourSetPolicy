@@ -2,6 +2,11 @@
 
 > HourSet is a strength-training app for iPhone and Android that plans a gym session every day, for the time you have, from what each muscle has recovered. Made for people new to lifting or coming back to it. No account: training data stays on the phone. US price $29.99 a year ($19.99 the first year for new subscribers) or $9.99 a month; no free trial.
 
+## Get it
+
+- [App Store](https://apps.apple.com/us/app/id6804334840): iPhone
+- [Google Play](https://play.google.com/store/apps/details?id=com.hourset.app): Android
+
 ## Pages
 
 - [What HourSet is](about/): what it does, who it is for, privacy, price, where to get it
