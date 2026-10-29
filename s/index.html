@@ -74,11 +74,19 @@ everything after the <code>#</code>.</p>
 // a fragment by anyone, and this is the only place on the page where outside
 // text reaches an attribute - so it either matches the shape the app writes,
 // exactly, or the page says there is nothing here.
-(function () {
+//
+// Read again whenever the fragment changes, not once. A second code scanned
+// into a tab already showing this page only changes the part after the #, so
+// the page does not reload, and a button still pointing at the first code
+// opened the previous workout (gym session, 28 Oct 2026). pageshow covers the
+// same page brought back from the back-forward cache.
+function show() {
   var raw = (location.hash || '').replace(/^#/, '');
   var ok = /^HS1\.[A-Za-z0-9_=-]+$/.test(raw);
-  document.getElementById(ok ? 'has-session' : 'no-session').className = '';
-  if (!ok) { return; }
+  document.getElementById('has-session').className = ok ? '' : 'none';
+  document.getElementById('no-session').className = ok ? 'none' : '';
+  var open = document.getElementById('open');
+  if (!ok) { open.removeAttribute('href'); return; }
 
   // Android gets an intent:// URL, not the custom scheme.
   //
@@ -102,8 +110,11 @@ everything after the <code>#</code>.</p>
     ? 'intent://plan/' + raw
       + '#Intent;scheme=hourset;package=com.hourset.app;end'
     : 'hourset://plan#' + raw;
-  document.getElementById('open').setAttribute('href', deep);
-})();
+  open.setAttribute('href', deep);
+}
+show();
+window.addEventListener('hashchange', show);
+window.addEventListener('pageshow', show);
 </script>
 </body>
 </html>
